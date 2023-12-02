@@ -74,7 +74,7 @@ class MongoDbSupport:
 
 # -----------------------------------
 
-    def kill_collection(self,db:str,coll:str):
+    def kill_collection(self,coll:str):
         
         '''
         MONGODB adatbázis collection törlése
@@ -85,7 +85,7 @@ class MongoDbSupport:
         import pandas as pd
     
         client = pymongo.MongoClient(self._connection_str_)
-        mydb = client[db]   #DB 
+        mydb = self.mydb    #DB 
         col=mydb[coll]      #Collection
         col.drop()
 
@@ -166,8 +166,10 @@ class MongoDbSupport:
             print("** get_mongo_selection_data Cursor:",cursor) #DEBUG
             
         return(cursor)
+    
 
-    def create_collection(self,db_name,collection_name,record_def:dict):
+
+    def create_collection(self,collection_name,record_def:dict):
 
         import pymongo
         import pandas as pd
@@ -216,7 +218,7 @@ if __name__=="__main__":
     print(mc.connected)
     
     _collection_def_={"_name":"","pwd":""}
-    mc.create_collection(_DB_,"Collection_3",_collection_def_)    
+    mc.create_collection("Collection_3",_collection_def_)    
 
     mc.disconnect()
     print(mc.connected)
