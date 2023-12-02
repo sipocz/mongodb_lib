@@ -169,15 +169,17 @@ class MongoDbSupport:
     
 
 
+
+
     def create_collection(self,collection_name,record_def:dict):
 
         import pymongo
         import pandas as pd
 
         mydb = self.mydb   #DB 
-        collections=mydb.getCollectionNames()
+        collections=mydb.list_collection_names()
         if collection_name not in collections:
-            mydb.createCollection(collection_name)
+            
             if self.dms:
                 print(f"Collection {collection_name} created!!") 
 
