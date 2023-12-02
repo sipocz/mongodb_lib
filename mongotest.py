@@ -188,7 +188,15 @@ class MongoDbSupport:
         
         col.insert_one(record_def)
         return(col)
-        
+
+    def list_collections(self):
+
+        import pymongo
+        import pandas as pd
+
+        mydb = self.mydb   #DB 
+        collections=mydb.list_collection_names()
+        return(collections)        
 
 
 if __name__=="__main__":
@@ -222,7 +230,9 @@ if __name__=="__main__":
     _collection_def_={"_name":"","pwd":""}
     mc.create_collection("Collection_3",_collection_def_)    
 
+    print(mc.list_collections())
     mc.disconnect()
+
     print(mc.connected)
     
     
