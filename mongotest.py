@@ -77,7 +77,7 @@ class MongoDbSupport:
     def kill_collection(self,coll:str):
         
         '''
-        MONGODB adatbázis collection törlése
+        MONGODB adatbá zis collection törlése
         '''
         if self.dms:
             print("Mongo_kill_collection ")
@@ -97,7 +97,7 @@ class MongoDbSupport:
         
         '''
         MONGODB adatbázisba collection feltöltése fname csv-ből
-        Még nincs átírva
+       
         '''
         if self.dms:
             print("Upload_start")
