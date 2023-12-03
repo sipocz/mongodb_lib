@@ -93,7 +93,7 @@ class MongoDbSupport:
 
 # -----------------------------------
 
-    def upload_from_csv(self,db:str,coll:str,fname:str):
+    def upload_from_csv(self,coll:str,fname:str):
         
         '''
         MONGODB adatbázisba collection feltöltése fname csv-ből
@@ -105,7 +105,7 @@ class MongoDbSupport:
         import pandas as pd
     
         client = pymongo.MongoClient(self._connection_str_)
-        mydb = client[db]   #DB 
+        mydb = self.mydb   #DB 
         col=mydb[coll]      #Collection
         #print(df.head())
         df=pd.read_csv(fname)
@@ -129,7 +129,7 @@ class MongoDbSupport:
 
 # -----------------------------------
     
-    def regenerate_from_csv(self,db:str,coll:str,fname:str):
+    def regenerate_from_csv(self,coll:str,fname:str):
         
         '''
         MONGODB adatbázisba collection feltöltése fname csv-ből
@@ -140,10 +140,11 @@ class MongoDbSupport:
         import pandas as pd
     
         client = pymongo.MongoClient(self._connection_str_)
-        mydb = client[db]   #DB 
+        mydb = self.mydb   #DB 
         col=mydb[coll]      #Collection
         #print(df.head())
         df=pd.read_csv(fname)
+        listof 
 
 # -----------------------------------
 
@@ -231,6 +232,7 @@ if __name__=="__main__":
     mc.create_collection("Collection_3",_collection_def_)    
 
     print(mc.list_collections())
+    mc.upload_from_csv("coll1","d:/csv/organizations-100000.txt")
     mc.disconnect()
 
     print(mc.connected)
@@ -239,23 +241,3 @@ if __name__=="__main__":
 
 
 
-
-    #mc.to_csv(_PDF_DB_,_FILE_LOCATION_COLLECTION_,"E:/Backup/20220508/pdf_file_location.csv")
-    #mc.to_csv(_PDF_DB_,_META_INFO_,"E:/Backup/20220508/pdf_metadata.csv")
-    #mc.kill_collection(_PDF_DB_,_FILE_LOCATION_COLLECTION_)
-    #mc.upload_from_csv(_PDF_DB_,_FILE_LOCATION_COLLECTION_,"d:/Backup/20220305/pdf_file_location.csv")
-    
-    #mc.kill_collection(_PDF_DB_,_META_INFO_)
-    #mc.upload_from_csv(_PDF_DB_,_META_INFO_,"d:/corpus/_META_ABB_sentences_20220313_233000.txt")
-
-    #mc.regenerate_from_csv(_PDF_DB_,_META_INFO_,"d:/Backup/20220305/p")
-    '''
-    fname="d:/Backup/20220305/pdf_metadata.csv"
-    import pandas as pd
-    df=pd.read_csv(fname)
-    df=df.astype({"pos0":"int32","pos1":"int32","pos2":"int32","pos3":"int32"})
-
-    print(df.head())
-    df.to_csv("d:/Backup/20220312/pdf_metadata.csv",index=False)
-    '''
-    
