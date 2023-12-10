@@ -43,11 +43,12 @@ def grafikon(fx,desc1,txt1,desc2="",txt2="",ngraf=1,c1=None, c2=None,x=None,xlab
     ax.text(x=0.05, y=.93, s=title, transform=fig.transFigure, ha='left', fontsize=14, weight='bold', alpha=.8, color=_text_color_)
     ax.text(x=0.05, y=.90, s=title2, transform=fig.transFigure, ha='left', fontsize=12, alpha=.8, color=_text_color_)
 
+    plt.show()
 if __name__=="__main__":
     import pandas as pd    
     print("Hello")
     
     df=pd.DataFrame(data={"x":[1,2,3,4,5,6],"y":[22,33,44,55,66,77]})
-    df
+    
     df.head()
-    grafikon(df,"y","y",x="x")
+    grafikon(df,"y","y",x="x",xlabel="x", title="Hallo World")

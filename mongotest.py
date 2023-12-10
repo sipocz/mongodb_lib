@@ -77,7 +77,7 @@ class MongoDbSupport:
     def kill_collection(self,coll:str):
         
         '''
-        MONGODB adatbá zis collection törlése
+        MONGODB adatbázis collection törlése
         '''
         if self.dms:
             print("Mongo_kill_collection ")
