@@ -1,6 +1,7 @@
 # Create the figure and axes objects, specify the size and the dots per inches
 
-def grafikon(fx,desc1,txt1,desc2="",txt2="",ngraf=1,c1=None, c2=None,x=None,xlabel="",title=None, title2=None):
+def grafikon(df,desc1,txt1,desc2="",txt2="",ngraf=1,c1=None, c2=None,x=None,xlabel="",title=None, title2=None):
+
     import matplotlib.pyplot as plt
     fig, ax = plt.subplots(figsize=(14,7), dpi = 92)
     # Plot lines
@@ -14,12 +15,13 @@ def grafikon(fx,desc1,txt1,desc2="",txt2="",ngraf=1,c1=None, c2=None,x=None,xlab
         _line2_color_="#716F81"
     else:
         _line2_color_=c2
-    y_data = fx[desc1]
-    x_data = fx.index
-    if type(fx)==list:
-        x_data=[i for i in range(len(fx))]
-        y_data=fx
-
+    if type(df)==list:
+        x_data=[i for i in range(len(df))]
+        y_data=df
+    else:
+        y_data = df[desc1]
+        x_data = df.index
+    
     if ngraf==1:
         line = ax.plot(x_data, y_data, label=txt1,c=_line1_color_)
 
