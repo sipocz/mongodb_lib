@@ -1,7 +1,7 @@
 # Create the figure and axes objects, specify the size and the dots per inches
 
 def grafikon(df,col_1,desc_1,col_2="",desc_2="",n_graf=1,c_1=None, c_2=None,x=None,x_label="",title=None, title_2=None):
-    __DEBUG__=True
+    __DEBUG__=False
     import matplotlib.pyplot as plt
     fig, ax = plt.subplots(figsize=(14,7), dpi = 92)
     # Plot lines
@@ -60,17 +60,19 @@ def grafikon(df,col_1,desc_1,col_2="",desc_2="",n_graf=1,c_1=None, c_2=None,x=No
     ax.add_patch(plt.Rectangle((0.86,.98), 0.04, -0.02, facecolor=_upperline_color_, transform=fig.transFigure, clip_on=False, linewidth = 0))
     ax.text(x=0.05, y=.93, s=title, transform=fig.transFigure, ha='left', fontsize=14, weight='bold', alpha=.8, color=_text_color_)
     ax.text(x=0.05, y=.90, s=title_2, transform=fig.transFigure, ha='left', fontsize=12, alpha=.8, color=_text_color_)
+    return(plt)
 
-    plt.show()
+
 if __name__=="__main__":
     import pandas as pd    
-    print("Hello")
+    
     
     df=pd.DataFrame(data={"x":[1,2,3,4,5,6],"y":[22,33,44,55,66,77]})
     
-    print(df.head())
-    grafikon(df,"y","y_desc", "x","x_desc",n_graf=2,x="x",x_label="x", title="Hallo World")
+ 
+    plt1=grafikon(df,"y","y_desc", "x","x_desc",n_graf=2,x="x",x_label="x", title="Hallo World", title_2="teszt_1")
 
     li=[99,45,32,12,39]
-    grafikon(li,"y","y_desc",x_label="xdata")
-
+    plt2=grafikon(li,"y","y_desc",x_label="xdata")
+    plt1.show()
+    plt2.show()
