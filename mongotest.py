@@ -144,7 +144,7 @@ class MongoDbSupport:
         col=mydb[coll]      #Collection
         #print(df.head())
         df=pd.read_csv(fname)
-        listof 
+        
 
 # -----------------------------------
 
